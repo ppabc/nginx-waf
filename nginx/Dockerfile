@@ -1,12 +1,12 @@
-FROM alpine:3.4
+FROM alpine:3.8
 
 
-ENV NGINX_VERSION 1.10.2
+ENV NGINX_VERSION 1.14.0
 
 #Changed - get LUA (jit, module, nginx_ndk) and dependencies
 ENV LUA_VERSION 5.3.3
 ENV NGX_DEVEL_KIT_VERSION 0.3.0
-ENV LUAJIT_VERSION 2.0.4
+ENV LUAJIT_VERSION 2.0.5
 ENV LUA_NGINX_MODULE_VERSION 0.10.6
 
 ENV LUAJIT_LIB=/usr/local/lib/lua/5.1
@@ -16,7 +16,7 @@ ENV LUAJIT_INC=/usr/local/include/luajit-2.0
 RUN apk update && apk add git && mkdir -p /opt && cd /opt && git clone https://github.com/simpl/ngx_devel_kit && cd ngx_devel_kit && git checkout -b v$NGX_DEVEL_KIT_VERSION && \
     apk add make g++ && cd /opt && git clone https://github.com/luajit/luajit && cd luajit && git checkout -b v$LUAJIT_VERSION && make && make install && cd .. && \
     cd /opt && git clone https://github.com/openresty/lua-nginx-module && cd lua-nginx-module && git checkout -b v$LUA_NGINX_MODULE_VERSION && \
-    cd /opt && git clone https://github.com/kvspb/nginx-auth-ldap.git && apk del git && \ 
+    cd /opt && apk del git && \ 
     GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 	&& CONFIG="\
 		--prefix=/etc/nginx \
@@ -37,7 +37,6 @@ RUN apk update && apk add git && mkdir -p /opt && cd /opt && git clone https://g
                 --with-ld-opt="-Wl,-rpath,/usr/local/lib/lua/5.1" \
                 --add-module=/opt/ngx_devel_kit \
                 --add-module=/opt/lua-nginx-module \
-                --add-module=/opt/nginx-auth-ldap \
 		--with-http_ssl_module \
 		--with-http_realip_module \
 		--with-http_addition_module \
