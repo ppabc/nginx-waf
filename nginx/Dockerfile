@@ -4,9 +4,9 @@ MAINTAINER aqzt.com <ppabc@qq.com>
 
 ENV LANG en_US.UTF-8
 
-ENV NGINX_VERSION 1.14.0
-ENV NGX_DEVEL_KIT_VERSION 0.3.1rc1
-ENV LUA_NGINX_MODULE_VERSION 0.10.13
+ENV NGINX_VERSION 1.10.2
+ENV NGX_DEVEL_KIT_VERSION 0.3.0
+ENV LUA_NGINX_MODULE_VERSION 0.10.7
 
 # Install LUAJIT
 RUN apk add --no-cache luajit
@@ -77,11 +77,10 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 		luajit-dev \
 	&& export LUAJIT_LIB=/usr/lib \
 	&& export LUAJIT_INC=/usr/include/luajit-2.0 \
-	&& curl -fSL https://github.com/simpl/ngx_devel_kit/archive/v${NGX_DEVEL_KIT_VERSION}.tar.gz -o /tmp/ndk.tar.gz \
+	&& curl -fSL https://github.com/simpl/ngx_devel_kit/archive/v0.3.0.tar.gz -o /tmp/ndk.tar.gz \
 	&& tar -xvf /tmp/ndk.tar.gz -C /tmp \
 	&& curl -fSL https://github.com/openresty/lua-nginx-module/archive/v${LUA_NGINX_MODULE_VERSION}.tar.gz -o /tmp/lua-nginx.tar.gz \
 	&& tar -xvf /tmp/lua-nginx.tar.gz -C /tmp \
-        && curl -fSL https://github.com/loveshell/ngx_lua_waf/archive/master.zip -o /tmp/ngx_lua_waf.zip \
 	&& curl -fSL http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz -o nginx.tar.gz \
 	&& curl -fSL http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz.asc  -o nginx.tar.gz.asc \
 	&& export GNUPGHOME="$(mktemp -d)" \
