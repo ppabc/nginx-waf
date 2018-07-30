@@ -83,7 +83,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 		perl-dev \
 		luajit-dev \
 	&& export LUAJIT_LIB=/usr/lib \
-	&& export LUAJIT_INC=/usr/include/luajit-2.0 \
+	&& export LUAJIT_INC=/usr/include/luajit-2.1.0_beta3-r0 \
 	&& curl -fSL https://github.com/simpl/ngx_devel_kit/archive/v0.3.0.tar.gz -o /tmp/ndk.tar.gz \
 	&& tar -xvf /tmp/ndk.tar.gz -C /tmp \
 	&& curl -fSL https://github.com/openresty/lua-nginx-module/archive/v${LUA_NGINX_MODULE_VERSION}.tar.gz -o /tmp/lua-nginx.tar.gz \
