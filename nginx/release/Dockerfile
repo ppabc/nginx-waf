@@ -2,7 +2,7 @@ FROM alpine:3.7
 
 ENV NGINX_VERSION release-1.13.9
 ENV LUAJIT_VERSION 2.0.5
-ENV LUA_NGX_MODULE_VERSION 0.10.13
+ENV LUA_NGX_MODULE_VERSION 0.10.11
 ENV LUA_RESTY_DNS_VERSION 0.20
 ENV NGINX_DEV_KIT_VERSION 0.3.0
 
@@ -60,7 +60,6 @@ RUN apk add --no-cache ca-certificates pcre libldap libgcc libressl \
     --pid-path=/var/run/nginx.pid \ 
     --error-log-path=/var/log/nginx/error.log \ 
     --http-log-path=/var/log/nginx/access.log \
-    --with-http_v2_module \
   && make -j$(getconf _NPROCESSORS_ONLN) \
   && make install \
   && ln -s /usr/local/lib/libluajit-5.1.so /usr/lib/libluajit-5.1.so.2 \
