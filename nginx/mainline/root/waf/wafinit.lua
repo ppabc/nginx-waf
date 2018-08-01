@@ -13,6 +13,7 @@ local M = {}
 local log_path = conf.logdir 
 local rule_path = conf.RulePath
 local url_deny = conf.UrlDeny
+local redirect = conf.Redirect
 local post_check = conf.postMatch
 local cookie_check = conf.CookieMatch
 local white_check = conf.whiteModule
@@ -115,11 +116,13 @@ end
     @return
 ]]
 local function sayHtml()
+    if optionIsOn(redirect) then
     html = "IP has been blocked"
     ngx.header.content_type = "text/html"
     ngx.status = ngx.HTTP_FORBIDDEN
     ngx.say(html)
     ngx.exit(ngx.status)
+    end
 end
 
 --[[

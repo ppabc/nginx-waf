@@ -3,6 +3,7 @@ local M = {
     attacklog = "on", -- 是否开启日志
     logdir = "/waf/logs", -- 日志目录
     UrlDeny = "on", -- 是否检测url
+    Redirect = "on",
     CookieMatch = "on", -- 是否检测cookie
     postMatch = "on", -- 是否检测post参数
     whiteModule = "on", -- 是否检测url白名单
