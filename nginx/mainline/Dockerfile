@@ -1,4 +1,5 @@
-FROM alpine:3.7
+FROM aqzt/docker-alpine:mini
+LABEL maintainer="aqzt.com (ppabc@qq.com)"
 
 ENV NGINX_VERSION release-1.13.9
 ENV LUAJIT_VERSION 2.0.5
