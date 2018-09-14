@@ -7,8 +7,7 @@ ENV LUA_RESTY_DNS_VERSION 0.21
 ENV NGINX_DEV_KIT_VERSION 0.3.1rc1
 
 RUN     addgroup -S nginx  && \
-	adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx nginx && \
-	addgroup -S consul-template
+	adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx nginx
 	
 RUN apk add --no-cache ca-certificates pcre libldap libgcc libressl \
   && apk add --no-cache --virtual build-dependencies \
