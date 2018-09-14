@@ -1,0 +1,13 @@
+{
+    "service": {
+        "name": "nginx",
+        "port": 80,
+        "check": {
+            "id": "nginx",
+            "name": "nginx on port 80",
+            "http": "http://localhost/ping",
+            "interval": "10s",
+            "timeout": "1s"
+        }
+    }
+}
