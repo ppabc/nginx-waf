@@ -73,12 +73,12 @@ RUN apk add --no-cache ca-certificates pcre libldap libgcc libressl \
   && rm -rf nginx \
   && apk del build-dependencies
 
+RUN  addgroup consul-template nginx
 # Add the files
 COPY root /
 
 # Setup permissions to allow consul-template to manage nginx
 RUN mkdir /etc/services.d/nginx/supervise/ && \
-    addgroup consul-template nginx && \
     mkfifo /etc/services.d/nginx/supervise/control && \
     chown -R root:s6 /etc/services.d/nginx/ && \
     chmod g+w /etc/services.d/nginx/supervise/control
