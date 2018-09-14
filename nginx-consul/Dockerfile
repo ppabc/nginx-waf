@@ -16,6 +16,7 @@ RUN apk add --no-cache ca-certificates pcre libldap libgcc libressl \
        openldap-dev \
        libressl-dev \
   && cd ~ \
+  && addgroup consul-template nginx \
   && wget -O luajit.tar.gz http://luajit.org/download/LuaJIT-${LUAJIT_VERSION}.tar.gz \
   && tar zxvf luajit.tar.gz \
   && cd LuaJIT-${LUAJIT_VERSION} \
@@ -71,7 +72,6 @@ RUN apk add --no-cache ca-certificates pcre libldap libgcc libressl \
   && rm -rf lua-nginx-module-${LUA_NGX_MODULE_VERSION} \
   && rm -rf nginx-auth-ldap \
   && rm -rf nginx \
-  && addgroup consul-template nginx \
   && apk del build-dependencies
 
 # Add the files
