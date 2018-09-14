@@ -7,7 +7,8 @@ ENV LUA_RESTY_DNS_VERSION 0.21
 ENV NGINX_DEV_KIT_VERSION 0.3.1rc1
 
 RUN set -x ; \
-    addgroup nginx
+    addgroup nginx ; \
+    addgroup consul-template
 
 RUN apk add --no-cache ca-certificates pcre libldap libgcc libressl \
   && apk add --no-cache --virtual build-dependencies \
