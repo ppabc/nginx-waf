@@ -6,8 +6,7 @@ ENV LUA_NGX_MODULE_VERSION 0.10.13
 ENV LUA_RESTY_DNS_VERSION 0.21
 ENV NGINX_DEV_KIT_VERSION 0.3.1rc1
 
-RUN apk upgrade --update --no-cache && \
-    rm -rf /var/cache/apk/* && \
+RUN set -x ; \
     addgroup consul-template nginx
 
 RUN apk add --no-cache ca-certificates pcre libldap libgcc libressl \
