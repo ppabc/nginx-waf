@@ -16,7 +16,6 @@ RUN apk add --no-cache ca-certificates pcre libldap libgcc libressl \
        openldap-dev \
        libressl-dev \
   && cd ~ \
-  && addgroup consul-template nginx \
   && wget -O luajit.tar.gz http://luajit.org/download/LuaJIT-${LUAJIT_VERSION}.tar.gz \
   && tar zxvf luajit.tar.gz \
   && cd LuaJIT-${LUAJIT_VERSION} \
