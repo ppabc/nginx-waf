@@ -1,4 +1,4 @@
-#!/usr/bin/execlineb -S1
+#!/usr/bin/with-contenv sh
 
   mkdir -p /data/nginx-waf/logs
   chown -R nginx /data/nginx-waf/logs
