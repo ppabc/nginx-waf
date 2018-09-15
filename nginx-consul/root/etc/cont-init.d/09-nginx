@@ -1,0 +1,9 @@
+#!/usr/bin/execlineb -S1
+
+  mkdir -p /data/nginx-waf/logs
+  chown -R nginx /data/nginx-waf/logs
+  mkdir -p /tmp/nginx
+  chown -R nginx /tmp/nginx
+
+  mkdir -p /tmp/state
+  touch /tmp/state/09-nginx
