@@ -6,9 +6,7 @@ ENV LUA_NGX_MODULE_VERSION 0.10.13
 ENV LUA_RESTY_DNS_VERSION 0.21
 ENV NGINX_DEV_KIT_VERSION 0.3.1rc1
 
-RUN     addgroup -S nginx  && \
-	adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx nginx
-	
+
 RUN apk add --no-cache ca-certificates pcre libldap libgcc libressl \
   && apk add --no-cache --virtual build-dependencies \
        build-base \
@@ -32,6 +30,8 @@ RUN apk add --no-cache ca-certificates pcre libldap libgcc libressl \
        /var/lib/nginx/fastcgi \
        /var/lib/nginx/proxy \
        /var/log/nginx \
+  && addgroup -S nginx \
+  && adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx nginx \
   && cd ~ \
   && wget -O ngx_devel_kit.tar.gz https://github.com/simpl/ngx_devel_kit/archive/v${NGINX_DEV_KIT_VERSION}.tar.gz \
   && tar zxvf ngx_devel_kit.tar.gz \
