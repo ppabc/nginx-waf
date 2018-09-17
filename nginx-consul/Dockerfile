@@ -32,6 +32,7 @@ RUN apk add --no-cache ca-certificates pcre libldap libgcc libressl \
        /var/log/nginx \
   && addgroup -S nginx \
   && adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx nginx \
+  && addgroup consul-template nginx \
   && cd ~ \
   && wget -O ngx_devel_kit.tar.gz https://github.com/simpl/ngx_devel_kit/archive/v${NGINX_DEV_KIT_VERSION}.tar.gz \
   && tar zxvf ngx_devel_kit.tar.gz \
