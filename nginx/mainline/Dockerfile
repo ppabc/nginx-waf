@@ -1,7 +1,7 @@
 FROM aqzt/docker-alpine
 LABEL maintainer="aqzt.com (ppabc@qq.com)"
 
-ENV NGINX_VERSION release-1.14.0
+ENV NGINX_VERSION release-1.14.1
 ENV LUAJIT_VERSION 2.0.5
 ENV LUA_NGX_MODULE_VERSION 0.10.13
 ENV LUA_RESTY_DNS_VERSION 0.21
