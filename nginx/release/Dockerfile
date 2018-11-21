@@ -1,12 +1,13 @@
-FROM alpine:3.8
+FROM alpine:edge
+LABEL maintainer="aqzt.com (ppabc@qq.com)"
 
-ENV NGINX_VERSION release-1.14.0
+ENV NGINX_VERSION release-1.14.1
 ENV LUAJIT_VERSION 2.0.5
 ENV LUA_NGX_MODULE_VERSION 0.10.13
 ENV LUA_RESTY_DNS_VERSION 0.21
 ENV NGINX_DEV_KIT_VERSION 0.3.1rc1
 
-RUN apk add --no-cache ca-certificates pcre libldap libgcc libressl \
+RUN apk add --no-cache ca-certificates pcre libldap libgcc openssl \
   && apk add --no-cache --virtual build-dependencies \
        build-base \
        pcre-dev \
@@ -14,7 +15,7 @@ RUN apk add --no-cache ca-certificates pcre libldap libgcc libressl \
        zlib-dev \
        openssh-client \
        openldap-dev \
-       libressl-dev \
+       openssl-dev \
   && cd ~ \
   && wget -O luajit.tar.gz http://luajit.org/download/LuaJIT-${LUAJIT_VERSION}.tar.gz \
   && tar zxvf luajit.tar.gz \
@@ -73,5 +74,6 @@ RUN apk add --no-cache ca-certificates pcre libldap libgcc libressl \
   && rm -rf nginx \
   && apk del build-dependencies
 
+ADD root /
 
 CMD ["/usr/sbin/nginx","-g","daemon off;"]
